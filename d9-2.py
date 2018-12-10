@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
-print('Hello advent - Day 9 - Problem 1')
+from blist import blist
+
+print('Hello advent - Day 9 - Problem 2')
 
 def printBoard(player, circle, currentNdx):
 	return
@@ -14,7 +16,7 @@ def printBoard(player, circle, currentNdx):
 
 
 def playGame(numPlayers, numMarbles):
-	circle = []
+	circle = blist([])
 	currentNdx = -1
 
 	scores = [0 for i in range(numPlayers)]
@@ -66,11 +68,7 @@ with open('d9-input.txt') as f:
 		print('play a game with', numPlayers, 'elves and', numMarbles, 'marbles', ('high score = '+str(highScore)) if highScore > 0 else '')
 		linenum += 1
 
-		finalScore = playGame(numPlayers, numMarbles)
-		print('For', numMarbles, 'marbles, Final score is', finalScore)
-
-		for xx in range(numMarbles, numMarbles*100, numMarbles):
-			finalScore = playGame(numPlayers, xx)
-			print('For', xx, 'marbles, Final score is', finalScore)
+		finalScore = playGame(numPlayers, numMarbles*100)
+		print('For', numMarbles*100, 'marbles, Final score is', finalScore)
 
 print('read ', linenum, ' lines')
